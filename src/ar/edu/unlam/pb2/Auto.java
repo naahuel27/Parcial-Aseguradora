@@ -4,12 +4,12 @@ public class Auto {
 
 	private String marca;
 	private String modelo;
-	private Integer año;
+	private Integer ano;
 	private Double sumaAsegurada;
 	
-	public Auto(String marca, String modelo, Integer año, Double sumaAsegurada) {
+	public Auto(String marca, String modelo, Integer ano, Double sumaAsegurada) {
 		this.sumaAsegurada = sumaAsegurada;
-		this.año = año;
+		this.ano = ano;
 		this.marca = marca;
 		this.modelo = modelo;
 				

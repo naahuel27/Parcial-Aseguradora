@@ -21,17 +21,14 @@ public class CompaniaDeSeguro {
 		return this.polizas.size();
 	}
 
-	public void denunciarSiniestro(Integer numero) {
+	public void denunciarSiniestro(Integer numero) throws PolizaInexistente {
+		Poliza polizaEncontrada = getPoliza(numero);
 		
-		for (Poliza poliza : this.polizas) {
-			if (poliza.getNumero().equals(numero)) {
-				poliza.denunciar();
-			}
-		}
-		//getPoliza(numero);
+		polizaEncontrada.denunciar();
+			
 	}
 
-	public Poliza getPoliza(Integer numero) {
+	public Poliza getPoliza(Integer numero) throws PolizaInexistente {
 		
 		for (Poliza poliza : this.polizas) {
 			if (poliza.getNumero().equals(numero)) {
@@ -39,6 +36,6 @@ public class CompaniaDeSeguro {
 			}
 		}
 		
-		return null;
+		throw new PolizaInexistente("La poliza ingresada es incorrecta");
 	}
 }

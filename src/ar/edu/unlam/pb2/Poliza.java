@@ -91,6 +91,8 @@ public abstract class Poliza {
 	}
 
 	protected abstract void denunciar();
+
+	
 	
 	
 

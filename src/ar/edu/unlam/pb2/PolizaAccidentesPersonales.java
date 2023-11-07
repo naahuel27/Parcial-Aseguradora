@@ -6,11 +6,12 @@ import java.util.Map;
 public class PolizaAccidentesPersonales extends Poliza implements SegurosDeVida{
 
 	private Map<Persona, TipoDeBeneficiario> beneficiarios;
-	
+	private Boolean seAccidento;
 	
 	public PolizaAccidentesPersonales(Integer numero, Persona asegurado, Double sumaAsegurada, Double prima) {
 		super(numero, asegurado, sumaAsegurada, prima);
 		this.beneficiarios = new HashMap<>();
+		this.seAccidento = false;
 		
 	}
 
@@ -36,8 +37,12 @@ public class PolizaAccidentesPersonales extends Poliza implements SegurosDeVida{
 
 	@Override
 	protected void denunciar() {
-		// TODO Auto-generated method stub
+		this.seAccidento = true;
 		
+	}
+	
+	public Boolean tuvoAlgunAccidente() {
+		return this.seAccidento;
 	}
 	
 	

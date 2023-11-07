@@ -79,7 +79,7 @@ public class TestCases{
 
 	
 	@Test
-	public void queSePuedaDenunciarElRoboDeUnAuto() {
+	public void queSePuedaDenunciarElRoboDeUnAuto() throws PolizaInexistente {
 		Integer numeroDePoliza = 1;
 		CompaniaDeSeguro libra = new CompaniaDeSeguro("Libra");
 	
@@ -92,7 +92,7 @@ public class TestCases{
 	}
 	
 	@Test
-	public void queSePuedaDenunciarUnSiniestroParaUnaPolizaDeVida() {
+	public void queSePuedaDenunciarUnSiniestroParaUnaPolizaDeVida() throws PolizaInexistente {
 		Integer numeroDePoliza = 1;
 		CompaniaDeSeguro libra = new CompaniaDeSeguro("Libra");
 	
@@ -100,23 +100,23 @@ public class TestCases{
 		
 		libra.denunciarSiniestro(1);
 		
-		assertTrue(libra.getPoliza(1).tuvoAlgunAccidente());
+		assertTrue(((PolizaAccidentesPersonales) libra.getPoliza(1)).tuvoAlgunAccidente());
 		
 	}
-/*	
-	@Test (expected = PolizaInexistente.class)
-	public void verificarQueNoSePuedaDenunciarUnSiniestroParaUnaPolizaQueNoExista() {
+
+	@Test (expected=PolizaInexistente.class)
+	public void verificarQueNoSePuedaDenunciarUnSiniestroParaUnaPolizaQueNoExista()  throws PolizaInexistente {
 		Integer numeroDePoliza = 1;
 		CompaniaDeSeguro libra = new CompaniaDeSeguro("Libra");
 	
-		libra.agregarPoliza(new PolizaDeAuto(numeroDePoliza++, new Persona("Camila", 45987345, 24), 2000000.0, 5000.0);
-		libra.agregarPoliza(new PolizaDeAuto(numeroDePoliza++, new Persona("Juan", 2745123, 24), 1500000.0, 4000.0);
-		libra.agregarPoliza(new PolizaAccidentesPersonales(numeroDePoliza++, new Persona("Pedro", 455647345, 24), 2000000.0, 5000.0);
-		libra.agregarPoliza(new PolizaCombinadoFamiliar(numeroDePoliza++, new Persona("Natalia", 45987345, 24), 2000000.0, 5000.0);
+		libra.agregarPoliza(new PolizaDeAuto(1, new Persona("Camila", 45987345, 24), 2000000.0, 5000.0));
+		libra.agregarPoliza(new PolizaDeAuto(2, new Persona("Juan", 2745123, 24), 1500000.0, 4000.0));
+		libra.agregarPoliza(new PolizaAccidentesPersonales(3, new Persona("Pedro", 155647345, 24), 2000000.0, 5000.0));
+		libra.agregarPoliza(new PolizaCombinadoFamiliar(4, new Persona("Natalia", 25987345, 24), 2000000.0, 5000.0));
 
-		libra.denunciarSiniestro(5);
-
-	}*/
+			libra.denunciarSiniestro(5);
+	
+	}
 	
 
 }
